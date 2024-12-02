@@ -7,6 +7,14 @@ import random
 pygame.init()
 
 font = pygame.freetype.SysFont("Times New Roman", 12)
+pygame.mixer.init()
+pygame.mixer.music.load("sounds/stranger-things-124008.mp3")
+pygame.mixer.music.set_volume(0.35)
+pygame.mixer.music.play(-1)
+
+# Pygame mixer Sound
+laser_sound = pygame.mixer.Sound("sounds/laser-shot-ingame-230500.mp3")
+laser_sound.set_volume(0.3)
 
 # Set up the game window
 screen_width = 800
@@ -59,6 +67,7 @@ while True:
                 bullet_x = player_x + player_width // 2 - bullet_width // 2
                 bullet_y = player_y 
                 bullets.append(pygame.Rect(bullet_x, bullet_y, bullet_width, bullet_height))
+                laser_sound.play()
 
     # Handle player movement
     keys = pygame.key.get_pressed()
